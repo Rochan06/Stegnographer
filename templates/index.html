@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/icon.ico' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&display=swap" rel="stylesheet">
+    <title>Steganographer</title>
+</head>
+
+<body>
+    <div class="heading">Steganographer</div><br />
+    <div class="app">
+
+        <div class="encoder">
+            <h1>Encoding</h1><br /><br />
+            <div class="form-encode">
+
+
+                <form action="{% url 'stegnograph:home' %}" id="form-encoding" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="formtype" value="encode" style="display: hidden;">
+                    <label class="label_container">Box Image</label>
+                    <br />
+                    <input type="file" accept="image/*" id="box_input" name="image1" required>
+                    
+                    <br><br>
+                    <label class="label_container">Container Image</label>
+                    <br />
+                    <input type="file" accept="image/*" id="container_input" name="image2" required>
+                    <br />
+                    <button type="submit" class="encode_btn_submit">
+                        Encode
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="decoder">
+            <h1>Decoding</h1><br /><br />
+            <div class="form-decode">
+                <form action="{% url 'stegnograph:home' %}" id="form-decoding" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" , name="formtype" value="decode" style="display: hidden;">
+                    <label class="label_container">Encoded Image</label>
+                    <br />
+                    <input type="file" accept="image/*" id="encoded_input" name="encrypted_image" required>
+                    <br />
+                    <button type="submit" class="decode_btn_submit">
+                        Decode
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        This Has Been Created by Om Mukherjee and Achyut Shukla in a total span of 15 days.
+    </div>
+</body>
+
+</html>

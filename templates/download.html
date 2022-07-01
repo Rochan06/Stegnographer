@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Download</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://uploads-ssl.webflow.com/612df657615ca044e95feb91/css/steganographer.webflow.6249a9adb.css"
+        rel="stylesheet" type="text/css" />
+</head>
+
+<body class="body-2">
+    <header id="hero-overlay" class="hero-overlay wf-section">
+        <div class="centered-container w-container">
+            <h1 class="heading-3">Here is your final file :</h1>
+            {% if encrypted %}
+            <div><a href="{{ media.encrypted_image_path.url }}" class="button w-button">Download</a></div>
+            {% else %}
+            <div><a href="{{ media.box_image_path.url }}" class="button w-button">Download</a></div>
+            {% endif %}
+        </div>
+    </header>
+</body>
+</html>
